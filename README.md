@@ -59,11 +59,11 @@ An improved precision value above 88% on the already existing recommendation sys
 
 
 ## Tools/Technologies used:
-Apache Spark 2.4.4
-Python 3.7
-Java 1.8
-Jupyter Notebook 6.0.0
-UNCC-DSBA cluster/ AWS EMR cluster
+- Apache Spark 2.4.4
+- Python 3.7
+- Java 1.8
+- Jupyter Notebook 6.0.0
+- UNCC-DSBA cluster/ AWS EMR cluster
 
 ## References:
 [1] F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4, Article 19 (December 2015), 19 pages. DOI: http://dx.doi.org/10.1145/2827872
