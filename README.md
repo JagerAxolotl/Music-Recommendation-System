@@ -1,6 +1,6 @@
-Course Project ITCS 6190 - Music Recommendation System
+# Course Project ITCS 6190 - Music Recommendation System
 
-Team Members:
+## Team Members:
 Dhananjay Arora 801077164 darora2
 Arjun Kalidas 801078014 akalidas
 Naman Manocha 801077765 nmanocha
