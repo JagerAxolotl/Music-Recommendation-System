@@ -1,9 +1,11 @@
 # Course Project ITCS 6190 - Music Recommendation System
 
 ## Team Members
-- Dhananjay Arora 801077164 darora2@uncc.edu
-- Arjun Kalidas 801078014 akalidas@uncc.edu
-- Naman Manocha 801077765 nmanocha@uncc.edu
+|Name| Niner ID| Email ID|
+|---|----|----|
+|Dhananjay Arora| 801077164| darora2@uncc.edu|
+|Arjun Kalidas| 801078014| akalidas@uncc.edu|
+|Naman Manocha| 801077765| nmanocha@uncc.edu|
 
 ## Introduction
 A recommendation system is a program/system that tries to make a prediction based on users’ past behavior and preferences. Recommendation systems are typically seen in applications such as listening to music listening, watching movies and e-commerce applications where users’ behavior can be modeled based on the history of purchases or consumption. We see them all around and it benefits a user in many ways because of its nature of prediction, value-add, and ease of consumption. A user wouldn’t have to spend hours on end to think and decide on a particular movie or music or a product. The relevant and useful content gets delivered to the user at appropriate times. Our aim is to build such a recommendation system using the existing tools and technologies, in addition to adding our own flavor to the data parallelization aspect by using Spark and Deep Learning libraries such as Google’s Tensorflow, Keras or Scikit-learn. We hope to achieve similar performance, if not better than the researchers that have been working on such technologies.
@@ -20,29 +22,33 @@ Upon analysis of our dataset, we realized the magnitude quite high to the ranks 
 It contains "additional files" (SQLite databases) in the same format as those for the full set, but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
 
 ## Additional Files
-To get started they provide some additional files which are reverse indices of several types. These should come bundled with the core dataset.
-List of all track Echo Nest ID. The format is: track id<SEP>song id<SEP>artist name<SEP>song title
+- To get started they provide some additional files which are reverse indices of several types. These should come bundled with the core dataset.
+- List of all track Echo Nest ID. The format is: track id<SEP>song id<SEP>artist name<SEP>song title
 (Careful, large to open in a web browser)
-List of all artist ID. The format is: artist id<SEP>artist mbid<SEP>track id<SEP>artist name
-The code to recreate that file is available here (and a faster version using the SQLite databases here).
-List of all unique artist terms (Echo Nest tags).
-List of all unique artist musicbrainz tags.
-List of the 515.576 tracks for which we have the year information, ordered by year.
-List of artists for which we know latitude and longitude.
-Summary file of the whole dataset, meaning same HDF5 format as regular files, it contains all metadata but no arrays like audio analysis, similar artists and tags. Only 300 Mb.
-SQLite database containing most metadata about each track (NEW VERSION 03/27/2011).
-SQLite database linking artist ID to the tags (Echo Nest and musicbrainz ones).
-SQLite database containing similarity among artists.
+- List of all artist ID. The format is: artist id<SEP>artist mbid<SEP>track id<SEP>artist name
+- The code to recreate that file is available here (and a faster version using the SQLite databases here).
+- List of all unique artist terms (Echo Nest tags).
+- List of all unique artist musicbrainz tags.
+- List of the 515.576 tracks for which we have the year information, ordered by year.
+- List of artists for which we know latitude and longitude.
+- Summary file of the whole dataset, meaning same HDF5 format as regular files, it contains all metadata but no arrays like audio analysis, similar artists and tags. Only 300 Mb.
+- SQLite database containing most metadata about each track (NEW VERSION 03/27/2011).
+- SQLite database linking artist ID to the tags (Echo Nest and musicbrainz ones).
+- SQLite database containing similarity among artists.
 
 ## Context
 We see an explosion of Music streaming apps these days and sometimes wonder or wrack our brains as to which one serves our purpose and how do we get the relevant set of songs when we open the application. We have many songs recommendation systems out there and those are being used by conglomerates like Spotify, SoundCloud, Pandora, Amazon Music, etc. And most of them are able to predict our interests and movies based on our previous watching history and feedback. Most of them work based on Collaborative and Content-based filtering which they call the “Hybrid” model. The companies use advanced machine learning algorithms and data processing engines like Spark and Hadoop to produce the best results possible. While all these technologies exist, this is our take on the song recommendation systems and how we can contribute even though minuscule, to the already popular technology. We are aware that Machine learning algorithms like Neural Networks and Deep Learning are used in such complex systems. Along with those algorithms, we will leverage Alternating Least Squares in Spark and execute the design on a distributed ecosystem like Hadoop.
 
 ## Final Result
-What you will definitely accomplish
+- What you will definitely accomplish
+
 We will definitely accomplish a music recommendation system based on Collaborative filtering and Content-based filtering - Hybrid approach. And we hope to achieve data parallelization using Spark
- What you are likely to accomplish, and 
+- What you are likely to accomplish, and 
+
 Content-based and collaborative filtering as an input to a deep learning algorithm to improve recommendation accuracy and precision.
-What you would ideally like to accomplish.
+- What you would ideally like to accomplish.
+
+
 An improved precision value above 88% on the already existing recommendation system based on deep learning. Also, we will attempt at overcoming the drawback of negative recommendations due to insufficient data and expansive collaborative filtering because we employ Spark.
 
 ## Task Division
@@ -64,6 +70,7 @@ An improved precision value above 88% on the already existing recommendation sys
 - Java 1.8
 - Jupyter Notebook 6.0.0
 - UNCC-DSBA cluster/ AWS EMR cluster
+- Git for hosting the website
 
 ## References
 [1] F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4, Article 19 (December 2015), 19 pages. DOI: http://dx.doi.org/10.1145/2827872
@@ -77,6 +84,8 @@ https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8662028&isnumber=866182
 http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1241199&isnumber=27823
 
 [5] Paul Lamere, Million Song Dataset, Lab ROSA, Volume 137, 2011, http://millionsongdataset.com/pages/getting-dataset/
+
+
 
 
 
