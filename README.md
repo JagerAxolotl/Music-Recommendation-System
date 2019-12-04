@@ -29,7 +29,7 @@ We see an explosion of Music streaming apps these days and sometimes wonder or w
 The result is divided into 3 categories namely:
 - What we will definitely accomplish
 
-We will accomplish a music recommendation system based on Collaborative filtering and Contentbased filtering - Hybrid approach and achieve data parallelization using Spark.
+We will accomplish a music recommendation system based on Collaborative filtering and Contentbased filtering and achieve data parallelization using Spark.
 - What we are likely to accomplish, and
 
 Content-based and collaborative filtering as an input to a deep learning algorithm to improve recommendation accuracy and precision.
@@ -78,6 +78,9 @@ An improved precision value above 88% on the already existing recommendation sys
 - Content based filtering using cosine similarity and TF-IDF vector.
 - We learnt to pre-process and model the data.
 - During our literature survey, we learnt different approaches to implement recommender system.
+
+# Conclusion
+- We accomplished a music recommendation system based on Collaborative filtering and Contentbased filtering and achieve data parallelization using Spark.
 
 ## References
 [1] Paul Lamere, Million Song Dataset, Lab ROSA, Volume 137, 2011, http://millionsongdataset.com/pages/getting-dataset/
