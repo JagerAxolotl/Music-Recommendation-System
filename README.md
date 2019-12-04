@@ -63,7 +63,8 @@ An improved precision value above 88% on the already existing recommendation sys
 - Git for hosting the website
 
 ## Packages used
-
+- SciPy
+- scikit-learn
 
 ## Challenges
 - We had a tough time understanding the mathematical concepts behind content based and collaborative filtering.
@@ -73,7 +74,10 @@ An improved precision value above 88% on the already existing recommendation sys
 - Even the initial dataset we decided to implement this recommendation system had to be modified and additional datasets had to be merged to get all the required parameters.
 
 ## Things learnt
-
+- We learnt to implement collaborative filtering using Stochastic Gradient Descent algorithm.
+- Content based filtering using cosine similarity and TF-IDF vector.
+- We learnt to pre-process and model the data.
+- During our literature survey, we learnt different approaches to implement recommender system.
 
 ## References
 [1] Paul Lamere, Million Song Dataset, Lab ROSA, Volume 137, 2011, http://millionsongdataset.com/pages/getting-dataset/
