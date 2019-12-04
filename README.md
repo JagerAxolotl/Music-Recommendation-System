@@ -1,6 +1,3 @@
-# UNCC Course Project ITCS 6190
-# Music Recommendation System
-
 ## Team Members
 
 |Name|Niner ID|Email ID|
