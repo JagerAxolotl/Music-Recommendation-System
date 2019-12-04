@@ -50,6 +50,9 @@ An improved precision value above 88% on the already existing recommendation sys
 ## Result and Examples
 
 ## Performance Evaluation (quantative)
+- Interpretataion of results:
+- Does the system work well
+- Where it can be improved
 
 ## Task Division
 
@@ -63,6 +66,7 @@ An improved precision value above 88% on the already existing recommendation sys
 |6|Prediction using Deep Learning|Naman and Arjun|29 Nov|
 |7|Experiments, Result Analysis, and Final Report|All|2 Dec|
 
+We met every second day as we live together.
 
 ## Tools/Technologies/Frameworks used
 - Apache Spark 2.4.4
@@ -89,7 +93,7 @@ An improved precision value above 88% on the already existing recommendation sys
 - We learnt to pre-process and model the data.
 - During our literature survey, we learnt different approaches to implement recommender system.
 
-# Conclusion
+## Conclusion
 - We accomplished a music recommendation system based on Collaborative filtering and Contentbased filtering and achieve data parallelization using Spark.
 
 ## References
