@@ -1,8 +1,8 @@
 # Course Project ITCS 6190 - Music Recommendation System
 
 ## Team Members
-|Name| Niner ID| Email ID|
-|---|----|----|
+|Name|Niner ID|Email ID|
+|---|---|---|
 |Dhananjay Arora| 801077164| darora2@uncc.edu|
 |Arjun Kalidas| 801078014| akalidas@uncc.edu|
 |Naman Manocha| 801077765| nmanocha@uncc.edu|
