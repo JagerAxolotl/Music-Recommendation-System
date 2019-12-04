@@ -19,6 +19,16 @@ The goal is to implement the SGD Stochastic Gradient Descent which helps in coll
 ## Algorithms implemented
 
 ## Dataset
+GroupLens[14] - HetRec 2011 - https://grouplens.org/datasets/hetrec-2011/
+This dataset contains social networking, tagging, and music artist listening information from a set of 2K users from Last.fm online music system. http://www.last.fm 
+
+Dataset files used are:
+- artists.dat - This file contains information about music artists listened and tagged by the users.
+- tags.dat - This file contains the set of tags available in the dataset.
+- user_artists.dat - This file contains the artists listened by each user. It also provides a listening count for each [user, artist] pair.
+
+This dataset was built by Ignacio Fernandez-Tobas with the collaboration of Ivan Cantador and Alejandro Bellogn, members of the Information Retrieval group at Universidad Autonoma de Madrid (http://ir.ii.uam.es)
+
 Million Song Dataset [1] - http://static.echonest.com/millionsongsubset_full.tar.gz
 Upon analysis of our dataset, we realized the magnitude was quite high to the ranks of millions. Since we cannot afford to run such a huge data and constrain the DSBA cluster or AWS, we are picking the smaller subset of 10,000 songs (1% of the entire dataset available from the source, 1.9GB). It contains "additional files" (SQLite databases) in the same format as those for the full set but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
 
@@ -87,15 +97,15 @@ An improved precision value above 88% on the already existing recommendation sys
 
 [2] F. Fessahaye et al., "T-RECSYS: A Novel Music Recommendation System Using Deep Learning,"2019 IEEE International Conference on Consumer Electronics (ICCE), Las Vegas, NV, USA, 2019, pp. 1-6. doi: 10.1109/ICCE.2019.8662028 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8662028&isnumber=8661828
 
-[3] Badr Ait Hammou, Ayoub Ait Lahcen, Salma Mouline, “An effective distributed predictive model with Matrix factorization and random forest for Big Data recommendation systems”, Expert Systems with Applications, Volume 137, 2019, Pages 253-265, ISSN 0957-4174, https://doi.org/10.1016/j.eswa.2019.06.046
+[3] Badr Ait Hammou, Ayoub Ait Lahcen, and Salma Mouline, “An effective distributed predictive model with Matrix factorization and random forest for Big Data recommendation systems”, Expert Systems with Applications, Volume 137, 2019, Pages 253-265, ISSN 0957-4174, https://doi.org/10.1016/j.eswa.2019.06.046
 
 [4] Yazhong Feng, Yueting Zhuang, and Yunhe Pan, "Music information retrieval by detecting mood via computational media aesthetics," Proceedings IEEE/WIC International Conference on Web Intelligence(WI 2003), Halifax, NS, Canada, 2003, pp. 235-241. doi:10.1109/WI.2003.1241199, http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1241199&isnumber=27823
 
-[5] https://github.com/vaslnk/Spotify-Song-Recommendation-ML
+[5] Jack Vasylenko, Chitwan Kaudan, Anith Patel, Tyler Larsen, and William Wang, Spotify Million Playlists (RecSys 2018) Challenge Submission, https://github.com/vaslnk/Spotify-Song-Recommendation-ML
 
-[6] https://towardsdatascience.com/prototyping-a-recommender-system-step-by-step-part-2-alternating-least-square-als-matrix-4a76c58714a1
+[6] Kevin Liao, Prototyping a Recommender System Step by Step Part 2: Alternating Least Square (ALS) Matrix Factorization in Collaborative Filtering, https://towardsdatascience.com/prototyping-a-recommender-system-step-by-step-part-2-alternating-least-square-als-matrix-4a76c58714a1
 
-[7] http://www.albertauyeung.com/post/python-matrix-factorization/
+[7] Albert Au Yeung, Matrix Factorization: A Simple Tutorial and Implementation in Python, http://www.albertauyeung.com/post/python-matrix-factorization/
 
 [8] https://nbviewer.jupyter.org/github/albertauyeung/matrix-factorization-in-python/blob/master/mf.ipynb
 
@@ -108,3 +118,5 @@ An improved precision value above 88% on the already existing recommendation sys
 [12] https://github.com/mickeykedia/Matrix-Factorization-ALS/blob/master/ALS%20Python%20Implementation.py
 
 [13] https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes
+
+[14]  @inproceedings{Cantador:RecSys2011, author = {Cantador, Iv\'{a}n and Brusilovsky, Peter and Kuflik, Tsvi}, title = {2nd Workshop on Information Heterogeneity and Fusion in Recommender Systems (HetRec 2011)}, booktitle = {Proceedings of the 5th ACM conference on Recommender systems}, series = {RecSys 2011}, year = {2011}, location = {Chicago, IL, USA}, publisher = {ACM}, address = {New York, NY, USA}, keywords = {information heterogeneity, information integration, recommender systems},} 
