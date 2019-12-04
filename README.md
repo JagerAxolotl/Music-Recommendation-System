@@ -107,16 +107,16 @@ An improved precision value above 88% on the already existing recommendation sys
 
 [7] Albert Au Yeung, Matrix Factorization: A Simple Tutorial and Implementation in Python, http://www.albertauyeung.com/post/python-matrix-factorization/
 
-[8] https://nbviewer.jupyter.org/github/albertauyeung/matrix-factorization-in-python/blob/master/mf.ipynb
+[8] Alberta Yeung, Matrix Factorization, https://nbviewer.jupyter.org/github/albertauyeung/matrix-factorization-in-python/blob/master/mf.ipynb
 
-[9] https://blog.insightdatascience.com/explicit-matrix-factorization-als-sgd-and-all-that-jazz-b00e4d9b21ea
+[9] Insight, Explicit Matrix Factorization: ALS, SGD, and All That Jazz, https://blog.insightdatascience.com/explicit-matrix-factorization-als-sgd-and-all-that-jazz-b00e4d9b21ea
 
-[10] https://www.analyticsvidhya.com/blog/2015/08/beginners-guide-learn-content-based-recommender-systems/
+[10] Shuvayan Das, Beginners Guide to learn about Content Based Recommender Engines, https://www.analyticsvidhya.com/blog/2015/08/beginners-guide-learn-content-based-recommender-systems/
 
-[11] https://towardsdatascience.com/using-word2vec-for-music-recommendations-bb9649ac2484
+[11] Ramzi Karam, Using Word2vec for Music Recommendations, Towards Data Science, https://towardsdatascience.com/using-word2vec-for-music-recommendations-bb9649ac2484
 
-[12] https://github.com/mickeykedia/Matrix-Factorization-ALS/blob/master/ALS%20Python%20Implementation.py
+[12] Paul Thompson, Matrix-Factorization-ALS, https://github.com/mickeykedia/Matrix-Factorization-ALS/blob/master/ALS%20Python%20Implementation.py
 
-[13] https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes
+[13] Charles Bochet, Get Started with PySpark and Jupyter Notebook in 3 Minutes, Discover Sicara, https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes
 
 [14]  @inproceedings{Cantador:RecSys2011, author = {Cantador, Iv\'{a}n and Brusilovsky, Peter and Kuflik, Tsvi}, title = {2nd Workshop on Information Heterogeneity and Fusion in Recommender Systems (HetRec 2011)}, booktitle = {Proceedings of the 5th ACM conference on Recommender systems}, series = {RecSys 2011}, year = {2011}, location = {Chicago, IL, USA}, publisher = {ACM}, address = {New York, NY, USA}, keywords = {information heterogeneity, information integration, recommender systems},} 
