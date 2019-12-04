@@ -64,7 +64,13 @@ An improved precision value above 88% on the already existing recommendation sys
 
 ## Packages used
 
+
 ## Challenges
+- We had a tough time understanding the mathematical concepts behind content based and collaborative filtering.
+- We were also confused at one point about latent features used in ALS algotithm.
+- We were not sure how to translate our understanding of TF-IDF vectorization and cosine similarity that are applied on bag of words to work for songs playlist.
+- Huge amount of data sets that we use for song recommendation let us into lot of performance related issues.
+- Even the initial dataset we decided to implement this recommendation system had to be modified and additional datasets had to be merged to get all the required parameters.
 
 ## Things learnt
 
