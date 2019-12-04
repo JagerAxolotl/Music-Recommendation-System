@@ -19,6 +19,8 @@ The goal is to implement the SGD Stochastic Gradient Descent which helps in coll
 
 ## Steps implemented
 
+## Algorithms implemented
+
 ## Dataset
 Million Song Dataset [1] - http://static.echonest.com/millionsongsubset_full.tar.gz
 Upon analysis of our dataset, we realized the magnitude was quite high to the ranks of millions. Since we cannot afford to run such a huge data and constrain the DSBA cluster or AWS, we are picking the smaller subset of 10,000 songs (1% of the entire dataset available from the source, 1.9GB). It contains "additional files" (SQLite databases) in the same format as those for the full set but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
@@ -38,6 +40,9 @@ Content-based and collaborative filtering as an input to a deep learning algorit
 
 An improved precision value above 88% on the already existing recommendation system based on deep learning. Also, we will attempt at overcoming the drawback of modeling based on negative recommendations due to insufficient data. And the way in which collaborative filtering data is obtained by calculating two values such as global information about every song and playlist, that is expensive to maintain, but this could be overcome by industry-standard techniques for indexing as well.
 
+## Result and Examples
+
+## Performance Evaluation (quantative)
 
 ## Task Division
 
@@ -52,13 +57,20 @@ An improved precision value above 88% on the already existing recommendation sys
 |7|Experiments, Result Analysis, and Final Report|All|2 Dec|
 
 
-## Tools/Technologies used
+## Tools/Technologies/Frameworks used
 - Apache Spark 2.4.4
 - Python 3.7
 - Java 1.8
 - Jupyter Notebook 6.0.0
 - UNCC-DSBA cluster/ AWS EMR cluster
 - Git for hosting the website
+
+## Packages used
+
+## Challenges
+
+## Things learnt
+
 
 ## References
 [1] Paul Lamere, Million Song Dataset, Lab ROSA, Volume 137, 2011, http://millionsongdataset.com/pages/getting-dataset/
