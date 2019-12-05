@@ -68,16 +68,15 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 ## Final Result and Examples
 ## Collaborative Filtering
 ### Existing Ratings 
-
-![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Existing_ratings.jpeg)
+![Existing Ratings Result](Existing_ratings.jpeg)
 
 ### Predicted Ratings
 
-![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Predicted_ratings.jpeg)
+![Predicted Rating Result](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Predicted_ratings.jpeg)
 
 ## Content-Based Filtering
 
-![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
+![Content Based Filtering Result](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
   ### Interpretation of results:
