@@ -52,7 +52,7 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 ## Final Result and Examples
 
 
-## Performance Evaluation (quantative)
+## Performance Evaluation (quantitative)
 - Interpretataion of results:
 - Does the system work well
 - Where it can be improved
