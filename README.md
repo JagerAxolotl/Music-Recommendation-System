@@ -77,15 +77,15 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 ![Content Based Filtering Result](Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
-  ### Interpretation of results:
-  - The Root Mean Squared Error and Mean Absolute Error for Content Based Filtering is really good for a recommender system
+### Interpretation of results:
+- The Root Mean Squared Error and Mean Absolute Error for Content Based Filtering is really good for a recommender system
 
 |Metric | Value|
 |---|---|
 |Root Mean Squared Error|0.367965|
 |Mean Absolute Error|4.36796|
 
-  - Collaborative Filtering metrics are in the process of evaluation. We will be updating when we receive the metrics. The delay is due to the enormous dataset and the challenge with the computational resources. 
+- Collaborative Filtering metrics are in the process of evaluation. We will be updating when we receive the metrics. The delay is due to the enormous dataset and the challenge with the computational resources. 
 
 ## Task Division
 
