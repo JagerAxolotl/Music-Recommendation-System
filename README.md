@@ -45,7 +45,7 @@ Our approach was a unified content based and collaborative filtering model that 
 - Each entry in csr matrix contain tf-idf value of the term. The 'featurize' method will return 2 items i.e songs dataframe and vocab which is a dictionary from term to int in sorted order.
 - Randomly splitting our data
 - Another method we deine is 'cosine_similarity', whcih takes 2 input vectors of shape (1, number_features). This method is used to find the proximilty between two csr_matrices.
-- We deine Mean Absolute Error as our loss function.
+- We define Mean Absolute Error as our loss function.
 - And finally our 'make_predictions' method returning one predicted rating for each element of ratings_test.
 
 ## Algorithms implemented
@@ -78,7 +78,7 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 ![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
-  ## Interpretataion of results:
+  ## Interpretation of results:
   - The Root Mean Squared Error and Mean Absolute Error for Content Based Filtering is really good for a recommender system
 
 |Metric | Value|
