@@ -27,10 +27,26 @@ The goal is to implement the Content based filtering whose underlying concept is
 8. Quantitative analysis of the results
 
 ## Approach
-Our approach was a unified content based and collaborative filtering model that could improve the song recommendation system in general. We considered a Stochastic Gradient Descent (SGD) approach due to a couple of reasons, one of them being the case that Mean Squared Error (MSE) for SGD as compared to ALS is a huge difference. And SGD tends to beat ALS while sometimes ALS recommend better movies. Our hunch was that this could be due to SGD trying to overfit more than ALS and is more susceptible to popularity bias. Although, we can't back that up with an empirical evidence or math yet, but even Netflix's paper about movie recommendation vouches for the same. While there is an option to combine both the model into one like an ensemble approach, we didn't take that. Another reason for choosing SGD being its ability to perform better in A/B tests. A/B tests are randomized experiments with two variants A and B. It is an application of statistical hypothesis testing used more in the field of statistics.
+Our approach was a unified content based and collaborative filtering model that could improve the song recommendation system in general. We considered a Stochastic Gradient Descent (SGD) approach due to a couple of reasons, one of them being the case that Mean Squared Error (MSE) for SGD as compared to ALS is a huge difference. And SGD tends to beat ALS while sometimes ALS recommend better songs. Our hunch was that this could be due to SGD trying to overfit more than ALS and is more susceptible to popularity bias. Although, we can't back that up with an empirical evidence or math yet, but even Netflix's paper about movie recommendation vouches for the same. While there is an option to combine both the model into one like an ensemble approach, we didn't take that. Another reason for choosing SGD being its ability to perform better in A/B tests. A/B tests are randomized experiments with two variants A and B. It is an application of statistical hypothesis testing used more in the field of statistics.
 
 ## Steps implemented
+### Collabrative Based:
+- For this approach we have read user_artists(userID, artistID, weight) and artists(id, name) files as dataframe and merged them.
+- We scaled the weight column imported from user_artists file.
+- We formed the compressed sparse row matrix with userId as our rows and artistId as our columns and each entry in matrix contain weight(renamed to playcount) which is number of times each user play songs corresponding to artistId. Further we filled each NaN value with 0.
+- Splitting the data in test and train
+- Defining Loss RMSE as our loss function.
+- Calling Recommender class, which contains our main Stochastic Gradient Descent model taking epochs, latent_feature, lambda, learning_rate as input to it.
+- Finally predicting the ratings in our test set.
 
+### Content Based:
+- We read ratings(userId, songId, rating, timestamp) and songs(songId, title, genre) file.
+- we define 'featurize' method which is the main intution behind the content based implementation, and takes songs file as input and added as feature named 'features'. Each row of our songs dataframe contain a csr_matrix of shape (1, num_features).
+- Each entry in csr matrix contain tf-idf value of the term. The 'featurize' method will return 2 items i.e songs dataframe and vocab which is a dictionary from term to int in sorted order.
+- Randomly splitting our data
+- Another method we deine is 'cosine_similarity', whcih takes 2 input vectors of shape (1, number_features). This method is used to find the proximilty between two csr_matrices.
+- We deine Mean Absolute Error as our loss function.
+- And finally our 'make_predictions' method returning one predicted rating for each element of ratings_test.
 
 ## Algorithms implemented
 Stochastic Gradient Descent for collaborative filtering, TF-IDF vectorization and Cosine similarity for content-based filtering were implemented in Python. Since, our idea is to make use of large datasets as and when the data grows, and train the model to predict better, we had to look for a high efficiency parallel processing system. Apache Spark achieves high performance for both batch and streaming data, using a state-of-the-art DAG scheduler, a query optimizer, and a physical execution engine. This satisfied all our requirements and the concept of Resilient Distributed Datasets (RDD) introduced in this framework helped break down the data, analyze and churn out the results that we needed. A bottleneck in this regard was the learning curve for Scala or Pyspark. And naturally we selected Pyspark, but this was a major unknown and pushed us back few steps from our goal. The APIs used in Python 3.6 was largely different from the ones used in Pyspark and the way the dataframes are handled was nothing similar to Pandas dataframes. This stepback was one of the reasons why we weren't able to implement a Deep Learning model that took the outputs from Content and Collaborative filters to deliver accurate results. Although independently the content based and Collaborative filtering gives a very good precision our consensus is that probably Deep learning that uses Neural Networks would've improved that significantly. 
@@ -50,11 +66,7 @@ Million Song Dataset [1] - http://static.echonest.com/millionsongsubset_full.tar
 Upon analysis of our dataset, we realized the magnitude was quite high to the ranks of millions. Since we cannot afford to run such a huge data and constrain the DSBA cluster or AWS, we are picking the smaller subset of 10,000 songs (1% of the entire dataset available from the source, 1.9GB). It contains "additional files" (SQLite databases) in the same format as those for the full set but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
 
 ## Final Result and Examples
-![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Existing_ratings.jpeg)
 
-![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Predicted_ratings.jpeg)
-
-![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
 - Interpretataion of results:
@@ -67,10 +79,10 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 |---|---|---|---|
 |1|Literature Survey|All|28-31 Oct|
 |2|Problem Identification and Dataset Collection|All|28-31 Oct|
-|3|Data Cleaning and Preprocessing|Dhananjay|7 Nov|
+|3|Data Cleaning and Preprocessing|Dhananjay and Naman|7 Nov|
 |4|Content and collaborative filtering|Naman and Arjun|16 Nov|
-|5|Data Parallelization using Spark|Arjun and Dhananjay|21 Nov|
-|6|Prediction using Deep Learning|Naman and Arjun|29 Nov|
+|5|Data Parallelization using Spark|Arjun and Dhananjay|6 Dec|
+|6|Prediction using Deep Learning(Future Work)|-|-|
 |7|Experiments, Result Analysis, and Final Report|All|2 Dec|
 
 
