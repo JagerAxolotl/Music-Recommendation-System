@@ -1,5 +1,4 @@
 
-
 ## Team Members
 
 |Name|Niner ID|Email ID|
@@ -50,19 +49,8 @@ This dataset was built by Ignacio Fernandez-Tobas with the collaboration of Ivan
 Million Song Dataset [1] - http://static.echonest.com/millionsongsubset_full.tar.gz
 Upon analysis of our dataset, we realized the magnitude was quite high to the ranks of millions. Since we cannot afford to run such a huge data and constrain the DSBA cluster or AWS, we are picking the smaller subset of 10,000 songs (1% of the entire dataset available from the source, 1.9GB). It contains "additional files" (SQLite databases) in the same format as those for the full set but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
 
-## Final Result
-The result is divided into 3 categories namely:
-- What we will definitely accomplish
+## Final Result and Examples
 
-We will accomplish a music recommendation system based on Collaborative filtering and Contentbased filtering and achieve data parallelization using Spark.
-- What we are likely to accomplish, and
-
-Content-based and collaborative filtering as an input to a deep learning algorithm to improve recommendation accuracy and precision.
-- What we would ideally like to accomplish.
-
-An improved precision value above 88% on the already existing recommendation system based on deep learning. Also, we will attempt at overcoming the drawback of modeling based on negative recommendations due to insufficient data. And the way in which collaborative filtering data is obtained by calculating two values such as global information about every song and playlist, that is expensive to maintain, but this could be overcome by industry-standard techniques for indexing as well.
-
-## Result and Examples
 
 ## Performance Evaluation (quantative)
 - Interpretataion of results:
@@ -107,10 +95,10 @@ An improved precision value above 88% on the already existing recommendation sys
 - Implementation Content based filtering using cosine similarity and TF-IDF vector.
 - The complexity and challenges of pre-processing huge datasets and modelling the data suitably.
 - During our literature survey, we learnt different approaches to implement recommender systems.
-- This project gave us a clear understanding
+- This project gave us a clear understanding of how to select datasets, what to look for in them and manipulate them to derive usable insights.
 
 ## Conclusion
-- We accomplished a music recommendation system based on Collaborative filtering and Contentbased filtering and achieve data parallelization using Spark.
+Recommendation systems are very prevalent nowadays and can be seen playing in the background of most websites and apps we visit. Whether we are visiting an e-commerce website like Amazon, a travel website such as Expedia, entertaintment apps like Netflix, YouTube and Spotify, recommendation systems are an inevitable aspect. The inevitability arises due to the need to stay more relevant in business, acquire more customers and deliver an absolutely fabulous customer experience. In our project, we describe and attempt at developing one such recommendation system. We took into account, the Collaborative filtering and Content-based filtering to better predict the user's behavior. In the development of this project, we sought to overcome the widely known problems and shortcomings of such a system. In addition, we achieved data parallelization using Spark where we could make use of the RDD data structure and efficiently model the output. Although, we haven't implemented the Deep learning module that takes in the output from the filters, we hope to pursue our goal and make it more extensible to be used by an e-commerce or entertaintment business.
 
 ## References
 [1] Paul Lamere, Million Song Dataset, Lab ROSA, Volume 137, 2011, http://millionsongdataset.com/pages/getting-dataset/
