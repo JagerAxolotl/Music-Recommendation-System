@@ -66,12 +66,27 @@ Million Song Dataset [1] - http://static.echonest.com/millionsongsubset_full.tar
 Upon analysis of our dataset, we realized the magnitude was quite high to the ranks of millions. Since we cannot afford to run such a huge data and constrain the DSBA cluster or AWS, we are picking the smaller subset of 10,000 songs (1% of the entire dataset available from the source, 1.9GB). It contains "additional files" (SQLite databases) in the same format as those for the full set but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
 
 ## Final Result and Examples
+## Collaborative Filtering
+### Existing Ratings 
+![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Existing_ratings.jpeg)
 
+### Predicted Ratings
+![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Predicted_ratings.jpeg)
+
+## Content-Based Filtering
+
+![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
-- Interpretataion of results:
-- Does the system work well
-- Where it can be improved
+  ## Interpretataion of results:
+  - The Root Mean Squared Error and Mean Absolute Error for Content Based Filtering is really good for a recommender system
+
+|Metric | Value|
+|---|---|
+|Root Mean Squared Error|0.367965|
+|Mean Absolute Error|4.36796|
+
+  - Collaborative Filtering metrics are in the process of evaluation. We will be updating when we receive the metrics. The delay is due to the enormous dataset and the challenge with the computational resources. 
 
 ## Task Division
 
