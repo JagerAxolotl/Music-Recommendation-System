@@ -50,7 +50,11 @@ Million Song Dataset [1] - http://static.echonest.com/millionsongsubset_full.tar
 Upon analysis of our dataset, we realized the magnitude was quite high to the ranks of millions. Since we cannot afford to run such a huge data and constrain the DSBA cluster or AWS, we are picking the smaller subset of 10,000 songs (1% of the entire dataset available from the source, 1.9GB). It contains "additional files" (SQLite databases) in the same format as those for the full set but referring only to the 10K song subset. Therefore, we can develop code on the subset, then port it to the full dataset.
 
 ## Final Result and Examples
+![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Existing_ratings.jpeg)
 
+![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Predicted_ratings.jpeg)
+
+![alt text](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
 - Interpretataion of results:
