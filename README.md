@@ -14,26 +14,26 @@ A recommendation system is a program/system that tries to make a prediction base
 We see an explosion of Music streaming apps these days and sometimes wonder or wrack our brains as to which one serves our purpose and how do we get the relevant set of songs when we open the application. We have many songs recommendation systems out there and those are being used by popular companies like Spotify, SoundCloud, Pandora, Amazon Music, etc. And most of them do predict music or movies based on our previous watching/listening history and feedback. Most of them work based on Collaborative and Content-based filtering which they call the “Hybrid” model [3]. The companies use advanced machine learning algorithms and data processing engines like Spark and Hadoop to produce the best results possible. While all these technologies exist, this is our take on the song recommendation systems and how we can contribute even though minuscule, to the already popular technology. We are aware that Machine learning algorithms like Neural Networks and Deep Learning are used in such complex systems. Along with these algorithms, we will leverage Alternating Least Squares in Spark [4] and execute the design on a distributed ecosystem like Hadoop, which is interesting.
 
 ## Objective
-The goal is to implement the Content based filtering whose underlying concept is TF-IDF vectorization and Cosine Similarity and Collaborative Filtering using Stochastic Gradient Descent to build a comprehensive recommender system for songs.
+The goal is to implement the Content-based filtering whose underlying concept is TF-IDF vectorization and Cosine Similarity and Collaborative Filtering using Stochastic Gradient Descent to build a comprehensive recommender system for songs.
 
 ## Tasks involved
 1. Literature Survey
 2. Dataset collection
 3. Data cleaning and pre-processing
-4. Data visulaization
+4. Data visualization
 5. Algorithm selection
 6. Designing Recommender Architecture
-7. Implementation of the algoirthms
+7. Implementation of the algorithms
 8. Quantitative analysis of the results
 
 ## Approach
-Our approach was a unified content based and collaborative filtering model that could improve the song recommendation system in general. We considered a Stochastic Gradient Descent (SGD) approach due to a couple of reasons, one of them being the case that Mean Squared Error (MSE) for SGD as compared to ALS is a huge difference. And SGD tends to beat ALS while sometimes ALS recommend better songs. Our hunch was that this could be due to SGD trying to overfit more than ALS and is more susceptible to popularity bias. Although, we can't back that up with an empirical evidence or math yet, but even Netflix's paper about movie recommendation vouches for the same. While there is an option to combine both the model into one like an ensemble approach, we didn't take that. Another reason for choosing SGD being its ability to perform better in A/B tests. A/B tests are randomized experiments with two variants A and B. It is an application of statistical hypothesis testing used more in the field of statistics.
+Our approach was a unified content-based and collaborative filtering model that could improve the song recommendation system in general. We considered a Stochastic Gradient Descent (SGD) approach due to a couple of reasons, one of them being the case that Mean Squared Error (MSE) for SGD as compared to ALS is a huge difference. And SGD tends to beat ALS while sometimes ALS recommends better songs. Our hunch was that this could be due to SGD trying to overfit more than ALS and is more susceptible to popularity bias. Although we can't back that up with empirical evidence or math yet, even Netflix's paper about movie recommendation vouches for the same. While there is an option to combine both the model into one like an ensemble approach, we didn't take that. Another reason for choosing SGD being its ability to perform better in A/B tests. A/B tests are randomized experiments with two variants A and B. It is an application of statistical hypothesis testing used more in the field of statistics.
 
 ## Steps implemented
-### Collabrative Based:
-- For this approach we have read user_artists(userID, artistID, weight) and artists(id, name) files as dataframe and merged them.
-- We scaled the weight column imported from user_artists file.
-- We formed the compressed sparse row matrix with userId as our rows and artistId as our columns and each entry in matrix contain weight(renamed to playcount) which is number of times each user play songs corresponding to artistId. Further we filled each NaN value with 0.
+### Collaborative Based:
+- For this approach we have read user_artists(userID, artistID, weight) and artists(id, name) files as data frame and merged them.
+- We scaled the weight column imported from the user_artists file.
+- We formed the compressed sparse row matrix with userId as our rows and artistId as our columns and each entry in matrix contain weight(renamed to playcount) which is the number of times each user plays songs corresponding to artistId. Further we filled each NaN value with 0.
 - Splitting the data in test and train
 - Defining Loss RMSE as our loss function.
 - Calling Recommender class, which contains our main Stochastic Gradient Descent model taking epochs, latent_feature, lambda, learning_rate as input to it.
@@ -41,15 +41,15 @@ Our approach was a unified content based and collaborative filtering model that 
 
 ### Content Based:
 - We read ratings(userId, songId, rating, timestamp) and songs(songId, title, genre) file.
-- we define 'featurize' method which is the main intution behind the content based implementation, and takes songs file as input and added as feature named 'features'. Each row of our songs dataframe contain a csr_matrix of shape (1, num_features).
+- we define 'featurize' method which is the main intuition behind the content based implementation, and takes songs file as input and added as feature named 'features'. Each row of our songs data frame contain a csr_matrix of shape (1, num_features).
 - Each entry in csr matrix contain tf-idf value of the term. The 'featurize' method will return 2 items i.e songs dataframe and vocab which is a dictionary from term to int in sorted order.
 - Randomly splitting our data
-- Another method we deine is 'cosine_similarity', whcih takes 2 input vectors of shape (1, number_features). This method is used to find the proximilty between two csr_matrices.
+- Another method we define is 'cosine_similarity', which takes 2 input vectors of shape (1, number_features). This method is used to find the proximity between two csr_matrices.
 - We define Mean Absolute Error as our loss function.
-- And finally our 'make_predictions' method returning one predicted rating for each element of ratings_test.
+- And finally, our 'make_predictions' method returning one predicted rating for each element of ratings_test.
 
 ## Algorithms implemented
-Stochastic Gradient Descent for collaborative filtering, TF-IDF vectorization and Cosine similarity for content-based filtering were implemented in Python. Since, our idea is to make use of large datasets as and when the data grows, and train the model to predict better, we had to look for a high efficiency parallel processing system. Apache Spark achieves high performance for both batch and streaming data, using a state-of-the-art DAG scheduler, a query optimizer, and a physical execution engine. This satisfied all our requirements and the concept of Resilient Distributed Datasets (RDD) introduced in this framework helped break down the data, analyze and churn out the results that we needed. A bottleneck in this regard was the learning curve for Scala or Pyspark. And naturally we selected Pyspark, but this was a major unknown and pushed us back few steps from our goal. The APIs used in Python 3.6 was largely different from the ones used in Pyspark and the way the dataframes are handled was nothing similar to Pandas dataframes. This stepback was one of the reasons why we weren't able to implement a Deep Learning model that took the outputs from Content and Collaborative filters to deliver accurate results. Although independently the content based and Collaborative filtering gives a very good precision our consensus is that probably Deep learning that uses Neural Networks would've improved that significantly. 
+Stochastic Gradient Descent for collaborative filtering, TF-IDF vectorization and Cosine similarity for content-based filtering were implemented in Python. Since, our idea is to make use of large datasets as and when the data grows, and train the model to predict better, we had to look for a high efficiency parallel processing system. Apache Spark achieves high performance for both batch and streaming data, using a state-of-the-art DAG scheduler, a query optimizer, and a physical execution engine. This satisfied all our requirements and the concept of Resilient Distributed Datasets (RDD) introduced in this framework helped break down the data, analyze and churn out the results that we needed. A bottleneck in this regard was the learning curve for Scala or Pyspark. And naturally we selected Pyspark, but this was a major unknown and pushed us back few steps from our goal. The APIs used in Python 3.6 were largely different from the ones used in Pyspark and the way the dataframes are handled was nothing similar to Pandas dataframes. This stepback was one of the reasons why we weren't able to implement a Deep Learning model that took the outputs from Content and Collaborative filters to deliver accurate results. Although independently the content based and Collaborative filtering gives a very good precision our consensus is that probably Deep learning that uses Neural Networks would've improved that significantly. 
 
 ## Datasets
 GroupLens[14] - HetRec 2011 - https://grouplens.org/datasets/hetrec-2011/
@@ -71,12 +71,10 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 ![Existing Ratings Result](Existing_ratings.jpeg)
 
 ### Predicted Ratings
-
-![Predicted Rating Result](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Predicted_ratings.jpeg)
+![Predicted Rating Result](Predicted_ratings.jpeg)
 
 ## Content-Based Filtering
-
-![Content Based Filtering Result](https://github.com/dhananjay-arora/Music-Recommendation-System/blob/master/Content_Based_Filtering.png)
+![Content Based Filtering Result](Content_Based_Filtering.png)
 
 ## Performance Evaluation (quantitative)
   ### Interpretation of results:
@@ -116,21 +114,21 @@ Upon analysis of our dataset, we realized the magnitude was quite high to the ra
 
 ## Challenges
 - It was challenging to understand the mathematical formulae, derivations and concepts behind content based and collaborative filtering.
-- We had some confusions at one point regarding the latent features used in ALS algotithm.
+- We had some confusion at one point regarding the latent features used in ALS algorithm.
 - The learning curve to translate our understanding of TF-IDF vectorization and cosine similarity that are applied on bag of words to work for songs playlist was overwhelming, but we overcame it eventually.
 - Enormous data sets that we use for song recommendation led us into a lot of performance related issues.
 - Even the initial dataset we decided to implement this recommendation system had to be modified and additional datasets had to be merged to get all the required parameters.
-- The undertsanding of the dataset and the relevant features were more time consuming than the actual implementation. Because lot of datasets had many features to offer, and we plotted various graphs such as correlation heat map, box plots (whisker plots) and histograms to reduce the dimensionality.
+- The understanding of the dataset and the relevant features were more time consuming than the actual implementation. Because lot of datasets had many features to offer, and we plotted various graphs such as correlation heat map, box plots (whisker plots) and histograms to reduce the dimensionality.
 
 ## Things learnt
 - Implementation of collaborative filtering using Stochastic Gradient Descent algorithm.
 - Implementation Content based filtering using cosine similarity and TF-IDF vector.
-- The complexity and challenges of pre-processing huge datasets and modelling the data suitably.
-- During our literature survey, we learnt different approaches to implement recommender systems.
+- The complexity and challenges of pre-processing huge datasets and modeling the data suitably.
+- During our literature survey, we learned different approaches to implement recommender systems.
 - This project gave us a clear understanding of how to select datasets, what to look for in them and manipulate them to derive usable insights.
 
 ## Conclusion
-Recommendation systems are very prevalent nowadays and can be seen playing in the background of most websites and apps we visit. Whether we are visiting an e-commerce website like Amazon, a travel website such as Expedia, entertaintment apps like Netflix, YouTube and Spotify, recommendation systems are an inevitable aspect. The inevitability arises due to the need to stay more relevant in business, acquire more customers and deliver an absolutely fabulous customer experience. In our project, we describe and attempt at developing one such recommendation system. We took into account, the Collaborative filtering and Content-based filtering to better predict the user's behavior. In the development of this project, we sought to overcome the widely known problems and shortcomings of such a system. In addition, we achieved data parallelization using Spark where we could make use of the RDD data structure and efficiently model the output. Although, we haven't implemented the Deep learning module that takes in the output from the filters, we hope to pursue our goal and make it more extensible to be used by an e-commerce or entertaintment business.
+Recommendation systems are very prevalent nowadays and can be seen playing in the background of most websites and apps we visit. Whether we are visiting an e-commerce website like Amazon, a travel website such as Expedia, entertainment apps like Netflix, YouTube and Spotify, recommendation systems are an inevitable aspect. The inevitability arises due to the need to stay more relevant in business, acquire more customers and deliver an absolutely fabulous customer experience. In our project, we describe and attempt at developing one such recommendation system. We took into account, the Collaborative filtering and Content-based filtering to better predict the user's behavior. In the development of this project, we sought to overcome the widely known problems and shortcomings of such a system. In addition, we achieved data parallelization using Spark where we could make use of the RDD data structure and efficiently model the output. Although, we haven't implemented the Deep learning module that takes in the output from the filters, we hope to pursue our goal and make it more extensible to be used by an e-commerce or entertainment business.
 
 ## References
 [1] Paul Lamere, Million Song Dataset, Lab ROSA, Volume 137, 2011, http://millionsongdataset.com/pages/getting-dataset/
@@ -159,4 +157,4 @@ Recommendation systems are very prevalent nowadays and can be seen playing in th
 
 [13] Charles Bochet, Get Started with PySpark and Jupyter Notebook in 3 Minutes, Discover Sicara, https://www.sicara.ai/blog/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes
 
-[14]  @inproceedings{Cantador:RecSys2011, author = {Cantador, Iv\'{a}n and Brusilovsky, Peter and Kuflik, Tsvi}, title = {2nd Workshop on Information Heterogeneity and Fusion in Recommender Systems (HetRec 2011)}, booktitle = {Proceedings of the 5th ACM conference on Recommender systems}, series = {RecSys 2011}, year = {2011}, location = {Chicago, IL, USA}, publisher = {ACM}, address = {New York, NY, USA}, keywords = {information heterogeneity, information integration, recommender systems},} 
+[14]  GroupLens Dataset @inproceedings{Cantador:RecSys2011, author = {Cantador, Iv\'{a}n and Brusilovsky, Peter and Kuflik, Tsvi}, title = {2nd Workshop on Information Heterogeneity and Fusion in Recommender Systems (HetRec 2011)}, booktitle = {Proceedings of the 5th ACM conference on Recommender systems}, series = {RecSys 2011}, year = {2011}, location = {Chicago, IL, USA}, publisher = {ACM}, address = {New York, NY, USA}, keywords = {information heterogeneity, information integration, recommender systems},} 
