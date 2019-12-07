@@ -30,7 +30,7 @@ The goal is to implement the Content-based filtering whose underlying concept is
 Our approach was a unified content-based and collaborative filtering model that could improve the song recommendation system in general. We considered a Stochastic Gradient Descent (SGD) approach due to a couple of reasons, one of them being the case that Mean Squared Error (MSE) for SGD as compared to ALS is a huge difference. And SGD tends to beat ALS while sometimes ALS recommends better songs. Our hunch was that this could be due to SGD trying to overfit more than ALS and is more susceptible to popularity bias. Although we can't back that up with empirical evidence or math yet, even Netflix's paper about movie recommendation vouches for the same. While there is an option to combine both the model into one like an ensemble approach, we didn't take that. Another reason for choosing SGD being its ability to perform better in A/B tests. A/B tests are randomized experiments with two variants A and B. It is an application of statistical hypothesis testing used more in the field of statistics.
 
 ## Steps implemented
-### Collaborative Based:
+### Collaborative Filtering:
 - For this approach we have read user_artists(userID, artistID, weight) and artists(id, name) files as data frame and merged them.
 - We scaled the weight column imported from the user_artists file.
 - We formed the compressed sparse row matrix with userId as our rows and artistId as our columns and each entry in matrix contain weight(renamed to playcount) which is the number of times each user plays songs corresponding to artistId. Further we replaced each NaN value with 0.
@@ -39,7 +39,7 @@ Our approach was a unified content-based and collaborative filtering model that 
 - Calling Recommender class, which contains our main Stochastic Gradient Descent model that takes epochs, latent_feature, lambda, learning_rate as input parameters.
 - Finally predicting the ratings in our test set.
 
-### Content Based:
+### Content Based Filtering:
 The concepts of Term Frequency (TF) and Inverse Document Frequency (IDF) are used in information retrieval systems and also content based filtering mechanisms (such as a content based recommender). They are used to determine the relative importance of a document / article / song/ news item / movie etc. TF is simply the frequency of a word in a document. IDF is the inverse of the document frequency among the whole corpus of documents. In our system, a "Song" is a document and "genre" which could be single or multiple is the word. Here we are trying to find the importance of a document (a.k.a song) by utilizing the "genre" attribute. "genre" in this context is not a small set of standard genres we see in the world of music, instead it is a combination of tags associated, user created playlists and a combination of them. The concept we are referring to can be thought of as analogous to the urban dictionary. Over a longer period of use, and evolution, the tags and playlists within the context of an app and then later among a wider population can become a permanent fixture and defines a genre.
 
 When we translate the same concept to a recommender system, with the song data, and the genre(s) they belong to the consensus is that the more number of genres a song is associated with, more the popularity and acceptance.
