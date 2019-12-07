@@ -40,6 +40,19 @@ Our approach was a unified content-based and collaborative filtering model that 
 - Finally predicting the ratings in our test set.
 
 ### Content Based:
+The concepts of Term Frequency (TF) and Inverse Document Frequency (IDF) are used in information retrieval systems and also content based filtering mechanisms (such as a content based recommender). They are used to determine the relative importance of a document / article / song/ news item / movie etc. TF is simply the frequency of a word in a document. IDF is the inverse of the document frequency among the whole corpus of documents. In our system, a "Song" is a document and "genre" which could be single or multiple is the word. Here we are trying to find the importance of a document (a.k.a song) by utilizing the "genre" attribute. "genre" in this context is not a small set of standard genres we see in the world of music, instead it is a combination of tags associated, user created playlists and a combination of them. The concept we are referring to can be thought of as analogous to the urban dictionary. Over a longer period of use, and evolution, the tags and playlists within the context of an app and then later among a wider population can become a permanent fixture and defines a genre.
+
+When we translate the same concept to a recommender system, with the song data, and the genre(s) they belong to the consensus is that the more number of genres a song is associated with, more the popularity and acceptance.
+
+Hence, we apply a TF-IDF vectorization, but while calculating TF-IDF, a log function is usually used to dampen the effect of high frequency words. For example: Pop = 3 vs Pop = 4 is vastly different from Pop = 10 vs Pop = 1000. In other words the relevance of a word in a document cannot be measured as a simple raw count.
+
+After calculating TF-IDF scores, how do we determine which songs in a genre are closer to each other, rather matching the exact TF-IDF scores? This is accomplished by the Cosine Similarity which computes the proximity based on the angle between the vectors.
+
+In this model, each item is stored as a vector of its attributes (which are also vectors) in an n-dimensional space and the angles between the vectors are calculated to determine the similarity between the vectors. Next, a song is characterized by its presence in multiple genres, associated with different tags and user generated playlists. The similarity between an item (song) with another item is characterized by the TF-IDF score obtained for a genre. A 2-D representation using Compressed Sparse Row (CSR) matrix with songs against genres is mapped. And when we find a matching TF-IDF score for two songs, then that genre will be considered and given a higher weightage. In this way, each song (in our dataset 17,000+) was compared against each other and a CSR matrix was generated.
+
+From each row (each song, treated as a document) of the CSR matrix, highest value is selected and corresponding X and Y coordinates of the location in matrix is fetched. These numbers added into an array are sorted to get the top n popular songs. Then corresponding song "titles" along with their rank is returned in a sorted order.
+      
+* Steps
 - We read ratings(userId, songId, rating, timestamp) and songs(songId, title, genre) "csv" files.
 - we define 'featurize' method which is the main intuition behind the content based implementation, and takes songs file as input and added column for features named 'features'. Each row of our songs data frame contain a csr_matrix of shape (1, num_features).
 - Each entry in csr matrix contain tf-idf value of the term. The 'featurize' method will return 2 items i.e songs dataframe and vocab which is a dictionary from term to int in sorted order.
